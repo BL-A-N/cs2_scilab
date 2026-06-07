@@ -31,3 +31,16 @@ end
 printf('\nEntropy    = %.4f bits\n', H);
 printf('Avg Length = %.4f bits\n', avg_len);
 printf('Efficiency = %.2f%%\n', H/avg_len*100);
+
+
+
+clear; clc;
+P = [0.4 0.2 0.2 0.1 0.1];
+symbols = 1:length(P);
+H = -sum(P .* log2(P));
+L_i = [2 2 2 3 3]; // Lengths of codewords for the probabilities above
+L_avg = sum(P .* L_i);
+efficiency = (H / L_avg) * 100;
+printf("Source Entropy (Lower Bound H): %.4f bits/symbol\n", H);
+printf("Average Codeword Length (L_avg): %.4f bits/symbol\n", L_avg);
+printf("Coding Efficiency: %.2f%%\n", efficiency);
